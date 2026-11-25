@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minh Khôi — Kiến trúc sư | Minimalist Editorial Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/base.css" />
+  <link rel="stylesheet" href="../assets/css/demo-shared.css" />
+  <style>
+    :root {
+      --bg: #f4f3ef;
+      --surface: #eae8e1;
+      --ink: #1a2228;
+      --muted: #5e666b;
+      --accent: #3d5a45;
+      --accent-ink: #f4f3ef;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-text: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --margin: clamp(1.25rem, 6vw, 5.5rem);
+    }
+
+    .arch-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem var(--margin);
+    }
+
+    .arch-brand { font-family: var(--font-display); font-size: 1.5rem; text-decoration: none; }
+    .arch-nav { display: flex; align-items: center; gap: 1.75rem; font-size: var(--step-small); }
+    .arch-nav a { text-decoration: none; color: var(--muted); }
+    .arch-nav a:hover { color: var(--ink); }
+
+    .arch-hero {
+      padding: 2rem var(--margin) clamp(4rem, 9vw, 7rem);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--gutter);
+      row-gap: 2.5rem;
+      align-items: end;
+    }
+
+    .arch-hero-title {
+      grid-column: 1 / -1;
+      font-size: clamp(2.6rem, 6.2vw, 5.25rem);
+      line-height: 0.96;
+      letter-spacing: -0.02em;
+      max-width: 14ch;
+    }
+
+    .arch-hero-lead { grid-column: 1 / -1; color: var(--muted); max-width: 34ch; }
+    .arch-hero-media { grid-column: 1 / -1; aspect-ratio: 16 / 9; overflow: hidden; }
+
+    @media (min-width: 56em) {
+      .arch-hero-title { grid-column: 1 / 8; }
+      .arch-hero-lead { grid-column: 9 / 13; justify-self: end; }
+      .arch-hero-media { grid-column: 3 / 13; margin-top: 1.5rem; }
+    }
+
+    .arch-section { padding-block: clamp(4.5rem, 9vw, 8rem); }
+    .arch-alt { background: var(--surface); }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: var(--gutter);
+    }
+
+    .bio-left { grid-column: 1 / -1; }
+    .bio-left h2 { font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 1rem; }
+    .bio-right { grid-column: 1 / -1; display: grid; gap: 2rem; }
+    .bio-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .bio-stats strong { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; display: block; }
+
+    @media (min-width: 56em) {
+      .bio-left { grid-column: 1 / 5; }
+      .bio-right { grid-column: 6 / 13; }
+    }
+
+    .works-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem; }
+    .works-head h2 { font-size: clamp(2rem, 4vw, 3.25rem); }
+    .work-list { display: grid; gap: clamp(4rem, 8vw, 6.5rem); }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--gutter);
+      row-gap: 1.5rem;
+      align-items: center;
+    }
+
+    .work-media { grid-column: 1 / -1; aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface); }
+    .work-body { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 0.85rem; align-items: flex-start; }
+    .work-body h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+    .work-facts { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: var(--step-small); color: var(--muted); }
+
+    @media (min-width: 56em) {
+      .work-item:nth-child(odd) .work-media { grid-column: 1 / 8; }
+      .work-item:nth-child(odd) .work-body { grid-column: 9 / 13; }
+      .work-item:nth-child(even) .work-media { grid-column: 6 / 13; order: 2; }
+      .work-item:nth-child(even) .work-body { grid-column: 1 / 5; order: 1; }
+    }
+
+    .material-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .mat-btn { padding: 0.6rem 1.2rem; background: var(--bg); color: var(--ink); font-size: var(--step-small); }
+    .mat-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+    .mat-detail { margin-top: 1.25rem; font-size: var(--step-lead); max-width: 44ch; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 56em) {
+      .two-col { grid-template-columns: 1fr 1fr; }
+    }
+
+    .arch-footer {
+      padding: 3.5rem var(--margin);
+      background: var(--surface);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      font-size: var(--step-small);
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="arch-header">
+    <a href="#top" class="arch-brand">Minh Khôi</a>
+    <nav class="arch-nav" aria-label="Điều hướng">
+      <a href="#about">Giới thiệu</a>
+      <a href="#works">Công trình</a>
+      <a href="#practice">Vật liệu</a>
+      <a href="#contact">Liên hệ</a>
+      <a href="../index.html" class="link-plain">Danh sách mẫu</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="arch-hero">
+      <h1 class="arch-hero-title" data-rise style="--i:0">Kiến trúc từ ánh sáng và vật liệu</h1>
+      <p class="arch-hero-lead" data-rise style="--i:1">
+        Thực hành kiến trúc nhà ở và không gian văn hóa tại TP. Hồ Chí Minh và Đà Lạt từ năm 2018.
+      </p>
+      <div class="arch-hero-media shutter" data-reveal>
+        <img src="../assets/img/demo-architect.jpg" alt="Biệt thự sân vườn bê tông và gỗ sồi" width="1600" height="900" class="cover" />
+      </div>
+    </section>
+
+    <section id="about" class="arch-section arch-alt wrap">
+      <div class="bio-grid">
+        <div class="bio-left" data-reveal>
+          <h2>Hành trình thực hành</h2>
+          <p class="muted">Tốt nghiệp Đại học Kiến trúc TP. HCM, từng tu nghiệp 3 năm tại Kyoto trước khi mở văn phòng riêng.</p>
+        </div>
+        <div class="bio-right" data-reveal>
+          <p>
+            Chúng tôi chỉ nhận thiết kế tối đa 4 công trình mỗi năm để trực tiếp theo sát từ giai đoạn khảo sát địa hình, nghiên cứu nắng gió cho đến giám sát hoàn thiện từng chi tiết mộc và đá.
+          </p>
+          <div class="bio-stats">
+            <div><strong class="nums">18</strong><span class="small muted">Công trình đã hoàn thành</span></div>
+            <div><strong class="nums">7</strong><span class="small muted">Năm thực hành độc lập</span></div>
+            <div><strong class="nums">3</strong><span class="small muted">Giải thưởng Kiến trúc Xanh</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="works" class="arch-section wrap">
+      <div class="works-head">
+        <h2 data-reveal>Công trình tiêu biểu</h2>
+        <span class="small muted">Nhấn vào công trình để xem hồ sơ chi tiết</span>
+      </div>
+
+      <div class="work-list">
+        <article class="work-item" data-reveal>
+          <div class="work-media case-trigger" data-case-id="thao-dien">
+            <img src="../assets/img/demo-architect.jpg" alt="Nhà vườn Thảo Điền" width="1600" height="900" loading="lazy" class="cover" />
+          </div>
+          <div class="work-body">
+            <h3>Nhà vườn Thảo Điền</h3>
+            <p class="muted">
+              Tổ chức lại khoảng thông tầng và hồ nước trung tâm để giảm nhiệt bức xạ trực tiếp, giữ không khí đối lưu tự nhiên suốt ngày.
+            </p>
+            <div class="work-facts">
+              <span>TP. Thủ Đức</span>
+              <span>420 m²</span>
+              <span>2025</span>
+            </div>
+            <button type="button" class="button" data-case-id="thao-dien">Xem hồ sơ công trình</button>
+          </div>
+        </article>
+
+        <article class="work-item" data-reveal>
+          <div class="work-media case-trigger" data-case-id="doi-thong">
+            <img src="../assets/img/demo-atelier.jpg" alt="Biệt thự Đồi Thông Đà Lạt" width="1600" height="900" loading="lazy" class="cover" />
+          </div>
+          <div class="work-body">
+            <h3>Biệt thự Đồi Thông</h3>
+            <p class="muted">
+              Kết cấu gỗ thông địa phương kết hợp tường đá chẻ, nương theo độ dốc tự nhiên của sườn đồi mà không san gạt nền đất cũ.
+            </p>
+            <div class="work-facts">
+              <span>Đà Lạt</span>
+              <span>310 m²</span>
+              <span>2024</span>
+            </div>
+            <button type="button" class="button" data-case-id="doi-thong">Xem hồ sơ công trình</button>
+          </div>
+        </article>
+
+        <article class="work-item" data-reveal>
+          <div class="work-media case-trigger" data-case-id="gallery-q3">
+            <img src="../assets/img/demo-agency.jpg" alt="Không gian triển lãm Quận 3" width="1600" height="900" loading="lazy" class="cover" />
+          </div>
+          <div class="work-body">
+            <h3>Không gian Triển lãm Quận 3</h3>
+            <p class="muted">
+              Cải tạo nhà kho cũ thành phòng trưng bày nghệ thuật với giếng trời lọc sáng tự nhiên và hệ tường thạch cao không mối nối.
+            </p>
+            <div class="work-facts">
+              <span>Quận 3</span>
+              <span>540 m²</span>
+              <span>2023</span>
+            </div>
+            <button type="button" class="button" data-case-id="gallery-q3">Xem hồ sơ công trình</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="practice" class="arch-section arch-alt wrap">
+      <div class="bio-grid">
+        <div class="bio-left" data-reveal>
+          <h2>Ngôn ngữ vật liệu</h2>
+          <p class="muted">Khảo sát nắng, gió và vật liệu bản địa trong bán kính 100 km.</p>
+        </div>
+        <div class="bio-right" data-reveal>
+          <div class="material-tabs" role="group" aria-label="Khám phá vật liệu">
+            <button type="button" class="mat-btn" data-mat="concrete" aria-pressed="true">Bê tông trần</button>
+            <button type="button" class="mat-btn" data-mat="timber" aria-pressed="false">Gỗ sồi &amp; thông</button>
+            <button type="button" class="mat-btn" data-mat="stone" aria-pressed="false">Đá tự nhiên</button>
+          </div>
+          <p id="mat-output" class="mat-detail">
+            Bê tông đổ ván khuôn gỗ giữ nguyên vân thô tự nhiên, giúp điều hòa nhiệt độ và không cần sơn phủ lại sau nhiều năm.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="arch-section wrap">
+      <div class="two-col">
+        <div data-reveal>
+          <h2 style="font-size: clamp(1.85rem, 3vw, 2.5rem); margin-bottom: 1.5rem;">Phản hồi từ chủ đầu tư</h2>
+          <div class="testimonial-grid">
+            <article class="testimonial-card">
+              <p class="testimonial-quote">"Ngôi nhà giữ được sự mát mẻ suốt mùa nắng mà hầu như không phải bật điều hòa vào ban ngày."</p>
+              <div class="testimonial-author"><strong>Anh Hoàng Nam</strong>Chủ đầu tư Nhà vườn Thảo Điền</div>
+            </article>
+          </div>
+        </div>
+        <div data-reveal>
+          <h2 style="font-size: clamp(1.85rem, 3vw, 2.5rem); margin-bottom: 1.5rem;">Câu hỏi thường gặp</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Thời gian thiết kế một căn nhà ở mất bao lâu?</summary>
+              <p>Trung bình từ 8 đến 12 tuần cho toàn bộ hồ sơ kiến trúc, kết cấu, điện nước và phối cảnh nội thất.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Văn phòng có nhận thi công trọn gói không?</summary>
+              <p>Chúng tôi phụ trách thiết kế và giám sát tác giả, đồng thời giới thiệu 2–3 nhà thầu uy tín đã từng hợp tác lâu năm.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="arch-section arch-alt wrap">
+      <div class="bio-grid">
+        <div class="bio-left" data-reveal>
+          <h2>Đặt lịch trao đổi dự án</h2>
+          <p class="muted">Gửi thông tin khu đất và mong muốn ban đầu để văn phòng sắp xếp buổi gặp trực tiếp.</p>
+        </div>
+        <div class="bio-right" data-reveal>
+          <form class="demo-form" data-demo-form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="arch-name">Họ và tên</label>
+                <input id="arch-name" class="form-input" type="text" required placeholder="Nguyễn Văn A" style="background: var(--bg);" />
+              </div>
+              <div class="form-group">
+                <label for="arch-email">Email hoặc Số điện thoại</label>
+                <input id="arch-email" class="form-input" type="text" required placeholder="email@domain.com" style="background: var(--bg);" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="arch-note">Thông tin khu đất &amp; nhu cầu</label>
+              <textarea id="arch-note" class="form-input" required placeholder="Diện tích đất, địa điểm, quy mô mong muốn..." style="background: var(--bg);"></textarea>
+            </div>
+            <div>
+              <button type="submit" class="button">Gửi yêu cầu tư vấn</button>
+            </div>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="arch-footer">
+    <div><strong>Minh Khôi Architecture</strong> — hello@minhkhoi.arch</div>
+    <div>Quận 2, TP. Hồ Chí Minh · Nhận tư vấn 4 công trình mỗi năm</div>
+  </footer>
+
+  <script type="module">
+    import { initCaseModal } from '../assets/js/demo-interactions.js';
+
+    initCaseModal({
+      'thao-dien': {
+        meta: 'TP. Thủ Đức · 420 m² · Hoàn thành 2025',
+        title: 'Nhà vườn Thảo Điền',
+        image: '../assets/img/demo-architect.jpg',
+        problem: 'Khu đất hướng Tây chịu nắng gắt buổi chiều và độ ẩm cao vào mùa mưa.',
+        solution: 'Bố trí hai lớp lam gỗ sồi xoay linh hoạt kết hợp hồ nước điều hòa vi khí hậu ở lõi trung tâm.',
+        result: 'Nhiệt độ trong nhà thấp hơn ngoài trời 4–5°C vào giờ cao điểm, giảm 45% điện năng làm mát.',
+        tags: ['Thiết kế kiến trúc', 'Hồ sơ kỹ thuật', 'Giám sát tác giả']
+      },
+      'doi-thong': {
+        meta: 'Đà Lạt · 310 m² · Hoàn thành 2024',
+        title: 'Biệt thự Đồi Thông',
+        image: '../assets/img/demo-atelier.jpg',
+        problem: 'Địa hình dốc 28 độ với nhiều cây thông lâu năm cần được giữ nguyên trạng.',
+        solution: 'Sử dụng hệ móng cọc thép nâng sàn nhẹ, chia khối nhà theo 3 cao độ bậc thang tự nhiên.',
+        result: 'Bảo tồn 100% số cây thông hiện hữu và rút ngắn thời gian thi công phần thô xuống 3 tháng.',
+        tags: ['Khảo sát địa hình', 'Kiến trúc & Nội thất', 'Cảnh quan']
+      },
+      'gallery-q3': {
+        meta: 'Quận 3 · 540 m² · Hoàn thành 2023',
+        title: 'Không gian Triển lãm Quận 3',
+        image: '../assets/img/demo-agency.jpg',
+        problem: 'Nhà kho cũ thiếu ánh sáng tự nhiên và hệ thống thông gió bí bách.',
+        solution: 'Mở 3 dải giếng trời hướng Bắc giúp ánh sáng khuếch tán đều mà không chiếu trực tiếp vào tác phẩm.',
+        result: 'Đón hơn 12.000 lượt khách tham quan trong năm đầu tiên và đạt giải Thiết kế Cải tạo tiêu biểu.',
+        tags: ['Cải tạo công trình', 'Thiết kế ánh sáng', 'Thi công nội thất']
+      }
+    });
+
+    const MAT_TEXT = {
+      concrete: 'Bê tông đổ ván khuôn gỗ giữ nguyên vân thô tự nhiên, giúp điều hòa nhiệt độ và không cần sơn phủ lại sau nhiều năm.',
+      timber: 'Gỗ sồi và gỗ thông xử lý nhiệt tạo cảm giác ấm áp cho không gian sinh hoạt, cân bằng độ vang âm thanh trong nhà.',
+      stone: 'Đá chẻ và đá travertine khai thác tại miền Trung, tạo bề mặt chống trượt cho sân trong và lối đi ngoài trời.'
+    };
+    const matBtns = document.querySelectorAll('[data-mat]');
+    const matOut = document.getElementById('mat-output');
+    matBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        matBtns.forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+        matOut.textContent = MAT_TEXT[btn.dataset.mat];
+      });
+    });
+  </script>
+</body>
+</html>

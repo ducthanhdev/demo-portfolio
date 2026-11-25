@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đức Thành — Creative Developer | Technical Dark Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/base.css" />
+  <link rel="stylesheet" href="../assets/css/demo-shared.css" />
+  <style>
+    :root {
+      --bg: #0d1114;
+      --surface: #161c21;
+      --ink: #eef2f5;
+      --muted: #8b98a2;
+      --accent: #2dd4bf;
+      --accent-ink: #071917;
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-text: 'Inter', system-ui, sans-serif;
+      --margin: clamp(1.25rem, 5vw, 4.5rem);
+    }
+
+    .dev-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem var(--margin); }
+    .dev-brand { font-family: var(--font-display); font-weight: 600; text-decoration: none; }
+    .dev-nav { display: flex; align-items: center; gap: 1.5rem; font-size: var(--step-small); color: var(--muted); }
+    .dev-nav a { text-decoration: none; }
+    .dev-nav a:hover { color: var(--ink); }
+
+    .dev-hero {
+      padding: 3rem var(--margin) clamp(4rem, 9vw, 7rem);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--gutter);
+      row-gap: 2.5rem;
+      align-items: center;
+    }
+
+    .dev-hero-copy { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1.5rem; }
+    .dev-hero-copy h1 { font-size: clamp(2.25rem, 5vw, 4.25rem); line-height: 1.03; letter-spacing: -0.03em; max-width: 14ch; }
+    .dev-hero-copy p { color: var(--muted); max-width: 42ch; }
+    .dev-hero-actions { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center; }
+    .dev-hero-media { grid-column: 1 / -1; aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface); }
+
+    @media (min-width: 56em) {
+      .dev-hero-copy { grid-column: 1 / 7; }
+      .dev-hero-media { grid-column: 7 / 13; }
+    }
+
+    .dev-section { padding-block: clamp(4rem, 8vw, 7rem); }
+    .dev-alt { background: var(--surface); }
+
+    .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+    .exp-card { background: var(--bg); padding: 1.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .exp-card h3 { font-size: var(--step-lead); font-weight: 500; }
+
+    .projects-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; margin-bottom: 3rem; }
+    .projects-top h2 { font-size: clamp(1.85rem, 3vw, 2.75rem); }
+    .stack-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .stack-btn { padding: 0.5rem 1rem; background: var(--surface); color: var(--muted); font-size: var(--step-small); }
+    .stack-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); font-weight: 500; }
+
+    .project-rows { display: grid; gap: 1.5rem; }
+    .project-row {
+      background: var(--surface);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1.25rem;
+      align-items: center;
+    }
+    .project-row.is-hidden { display: none; }
+    .proj-name { grid-column: 1 / -1; }
+    .proj-name h3 { font-size: var(--step-lead); font-weight: 500; margin-bottom: 0.4rem; }
+    .proj-desc { grid-column: 1 / -1; color: var(--muted); }
+    .proj-metric { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+    .proj-metric span { font-size: var(--step-small); color: var(--accent); font-weight: 500; }
+
+    @media (min-width: 56em) {
+      .proj-name { grid-column: 1 / 4; }
+      .proj-desc { grid-column: 4 / 9; }
+      .proj-metric { grid-column: 9 / 13; justify-content: flex-end; }
+    }
+
+    .two-col { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 56em) { .two-col { grid-template-columns: 1fr 1fr; } }
+
+    .dev-footer {
+      padding: 3.5rem var(--margin);
+      background: var(--surface);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      font-size: var(--step-small);
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="dev-header">
+    <a href="#top" class="dev-brand">Đức Thành</a>
+    <nav class="dev-nav" aria-label="Điều hướng">
+      <a href="#experience">Kinh nghiệm</a>
+      <a href="#projects">Hệ thống</a>
+      <a href="#contact">Liên hệ</a>
+      <a href="../index.html" class="link-plain">Danh sách mẫu</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="dev-hero">
+      <div class="dev-hero-copy">
+        <h1 data-rise style="--i:0">Xây dựng sản phẩm web nhanh và bền vững</h1>
+        <p data-rise style="--i:1">
+          Full-stack &amp; Creative Engineer với 6 năm kinh nghiệm phát triển kiến trúc frontend hiệu năng cao và API chịu tải lớn.
+        </p>
+        <div class="dev-hero-actions" data-rise style="--i:2">
+          <a href="#projects" class="button">Xem dự án thực tế</a>
+          <a href="#contact" class="link">Đặt lịch trao đổi</a>
+        </div>
+      </div>
+      <div class="dev-hero-media shutter" data-reveal>
+        <img src="../assets/img/demo-developer.jpg" alt="Bàn làm việc kỹ thuật tối giản" width="1600" height="900" class="cover" />
+      </div>
+    </section>
+
+    <section id="experience" class="dev-section dev-alt wrap">
+      <h2 style="font-size: clamp(1.85rem, 3vw, 2.75rem);" data-reveal>Kinh nghiệm &amp; Vai trò</h2>
+      <div class="exp-grid">
+        <article class="exp-card" data-reveal>
+          <span class="small muted">2024 — Hiện tại</span>
+          <h3>Lead Frontend Engineer · FinCore</h3>
+          <p class="muted">Dẫn dắt đội ngũ 6 kỹ sư xây dựng nền tảng quản trị tài chính doanh nghiệp phục vụ 40.000+ người dùng.</p>
+        </article>
+        <article class="exp-card" data-reveal>
+          <span class="small muted">2021 — 2024</span>
+          <h3>Full-stack Developer · StudioLab</h3>
+          <p class="muted">Phát triển hệ thống thương mại điện tử headless và tối ưu Core Web Vitals cho hơn 15 thương hiệu bán lẻ.</p>
+        </article>
+        <article class="exp-card" data-reveal>
+          <span class="small muted">Chuyên môn chính</span>
+          <h3>TypeScript · React · Node.js · Go</h3>
+          <p class="muted">Thiết kế Design System, API phân tán, PostgreSQL, Redis và hạ tầng Docker / Cloudflare.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="dev-section wrap">
+      <div class="projects-top">
+        <h2 data-reveal>Dự án &amp; Hệ thống</h2>
+        <div class="stack-filter" role="group" aria-label="Lọc theo mảng kỹ thuật">
+          <button type="button" class="stack-btn" data-cat="all" aria-pressed="true">Tất cả</button>
+          <button type="button" class="stack-btn" data-cat="frontend" aria-pressed="false">Frontend</button>
+          <button type="button" class="stack-btn" data-cat="backend" aria-pressed="false">Backend &amp; Cloud</button>
+        </div>
+      </div>
+
+      <div class="project-rows">
+        <article class="project-row" data-cat-item="frontend" data-reveal>
+          <div class="proj-name">
+            <h3>Kinetix Design System</h3>
+            <span class="small muted">React 19 · TypeScript · CSS Tokens</span>
+          </div>
+          <p class="proj-desc">
+            Thư viện 48 UI components chuẩn accessibility (WCAG AA) dùng chung cho 6 sản phẩm nội bộ, giảm 60% thời gian dựng màn hình mới.
+          </p>
+          <div class="proj-metric">
+            <span class="nums">99/100 Lighthouse</span>
+            <button type="button" class="button" data-case-id="kinetix">Chi tiết</button>
+          </div>
+        </article>
+
+        <article class="project-row" data-cat-item="backend" data-reveal>
+          <div class="proj-name">
+            <h3>PulsePay Webhook Engine</h3>
+            <span class="small muted">Node.js · PostgreSQL · Redis</span>
+          </div>
+          <p class="proj-desc">
+            Hệ thống hàng đợi xử lý giao dịch thời gian thực với cơ chế retry thông minh và idempotency key chống trùng lặp đơn hàng.
+          </p>
+          <div class="proj-metric">
+            <span class="nums">12,000 req/phút</span>
+            <button type="button" class="button" data-case-id="pulsepay">Chi tiết</button>
+          </div>
+        </article>
+
+        <article class="project-row" data-cat-item="frontend" data-reveal>
+          <div class="proj-name">
+            <h3>Archival 3D Viewer</h3>
+            <span class="small muted">WebGL · Three.js · GLSL</span>
+          </div>
+          <p class="proj-desc">
+            Trình xem mô hình sản phẩm tương tác 60fps trên trình duyệt di động với dung lượng tải ban đầu dưới 1.2 MB.
+          </p>
+          <div class="proj-metric">
+            <span class="nums">60 FPS · 1.1 MB</span>
+            <button type="button" class="button" data-case-id="archival">Chi tiết</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dev-section dev-alt wrap">
+      <div class="two-col">
+        <div data-reveal>
+          <h2 style="font-size: clamp(1.75rem, 3vw, 2.4rem); margin-bottom: 1.5rem;">Đánh giá từ đồng nghiệp</h2>
+          <div class="testimonial-grid">
+            <article class="testimonial-card" style="background: var(--bg);">
+              <p class="testimonial-quote">"Thành có khả năng nhìn ra điểm nghẽn hiệu năng rất nhanh và luôn giữ codebase sạch sẽ cho cả team."</p>
+              <div class="testimonial-author"><strong>Minh Tuấn</strong>Engineering Manager tại FinCore</div>
+            </article>
+          </div>
+        </div>
+        <div data-reveal>
+          <h2 style="font-size: clamp(1.75rem, 3vw, 2.4rem); margin-bottom: 1.5rem;">Câu hỏi thường gặp</h2>
+          <div class="faq-list">
+            <details class="faq-item" style="background: var(--bg);">
+              <summary>Bạn có nhận tư vấn kiến trúc hoặc dự án freelance không?</summary>
+              <p>Có, tôi nhận tư vấn tối ưu hiệu năng frontend, xây dựng Design System và phát triển MVP cho các startup.</p>
+            </details>
+            <details class="faq-item" style="background: var(--bg);">
+              <summary>Quy trình bàn giao mã nguồn như thế nào?</summary>
+              <p>Toàn bộ code được quản lý qua GitHub với CI/CD, unit test các luồng chính và tài liệu kỹ thuật đầy đủ.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="dev-section wrap">
+      <div class="two-col">
+        <div data-reveal>
+          <h2 style="font-size: clamp(1.85rem, 3vw, 2.6rem); margin-bottom: 1rem;">Trao đổi công việc hoặc dự án</h2>
+          <p class="muted">Phản hồi trong vòng 24 giờ cho các cơ hội hợp tác kỹ thuật hoặc tuyển dụng.</p>
+        </div>
+        <div data-reveal>
+          <form class="demo-form" data-demo-form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="dev-name">Tên của bạn</label>
+                <input id="dev-name" class="form-input" type="text" required placeholder="Trần Văn B" />
+              </div>
+              <div class="form-group">
+                <label for="dev-email">Email</label>
+                <input id="dev-email" class="form-input" type="email" required placeholder="ban@congty.vn" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="dev-msg">Nội dung trao đổi</label>
+              <textarea id="dev-msg" class="form-input" required placeholder="Mô tả ngắn về sản phẩm hoặc vị trí..."></textarea>
+            </div>
+            <div><button type="submit" class="button">Gửi tin nhắn</button></div>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="dev-footer">
+    <div><strong>Đức Thành</strong> — Full-stack &amp; Creative Engineer</div>
+    <div>thanh@ducthanh.dev · GitHub · LinkedIn · TP. Hồ Chí Minh</div>
+  </footer>
+
+  <script type="module">
+    import { initCaseModal } from '../assets/js/demo-interactions.js';
+
+    initCaseModal({
+      kinetix: {
+        meta: 'Frontend Architecture · React 19 · TypeScript',
+        title: 'Kinetix Design System',
+        image: '../assets/img/demo-developer.jpg',
+        problem: '6 sản phẩm nội bộ dùng giao diện rời rạc, mỗi team tự viết lại button, modal và table gây lỗi đồng bộ.',
+        solution: 'Xây dựng bộ tokens màu/chữ tập trung, 48 headless components có keyboard navigation và tài liệu Storybook.',
+        result: 'Giảm 60% thời gian dựng màn hình mới, đạt 99/100 điểm Lighthouse Performance và Accessibility.',
+        tags: ['Design Tokens', 'Component Library', 'WCAG AA', 'CI/CD npm']
+      },
+      pulsepay: {
+        meta: 'Backend System · Node.js · PostgreSQL · Redis',
+        title: 'PulsePay Webhook Engine',
+        image: '../assets/img/demo-developer.jpg',
+        problem: 'Lưu lượng giao dịch giờ cao điểm tăng đột biến khiến webhook gửi trễ hoặc xử lý trùng lặp.',
+        solution: 'Áp dụng Redis Stream làm hàng đợi phân mảnh, kết hợp cơ chế exponential backoff và khóa idempotency.',
+        result: 'Xử lý ổn định 12,000 request/phút với tỷ lệ uptime 99.98% và zero duplicate charge.',
+        tags: ['Queue Architecture', 'Idempotency', 'Monitoring', 'Load Testing']
+      },
+      archival: {
+        meta: 'Creative Web · WebGL · Three.js',
+        title: 'Archival 3D Viewer',
+        image: '../assets/img/demo-agency.jpg',
+        problem: 'File mô hình 3D gốc nặng hơn 25 MB khiến trình duyệt điện thoại bị đứng khi tải.',
+        solution: 'Nén hình học bằng Draco, tối ưu texture KTX2 và viết shader ánh sáng nhẹ thay thế bản đồ đổ bóng nặng.',
+        result: 'Dung lượng tải giảm còn 1.1 MB, duy trì mượt 60 FPS trên cả thiết bị tầm trung.',
+        tags: ['Three.js', 'GLSL Shaders', 'Draco Compression', 'Mobile Optimization']
+      }
+    });
+
+    const btns = document.querySelectorAll('[data-cat]');
+    const rows = document.querySelectorAll('[data-cat-item]');
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.cat;
+        btns.forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+        rows.forEach((row) => {
+          row.classList.toggle('is-hidden', val !== 'all' && row.dataset.catItem !== val);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

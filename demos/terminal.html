@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minh Quân — Backend &amp; DevOps | Interactive Terminal Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" /> <!-- taste-skill-ignore -->
+  <link rel="stylesheet" href="../assets/base.css" />
+  <link rel="stylesheet" href="../assets/css/demo-shared.css" />
+  <style>
+    :root {
+      --bg: #0b0f10;
+      --surface: #13191b;
+      --ink: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #4ade80;
+      --accent-ink: #052e16;
+      --font-display: 'JetBrains Mono', monospace; /* taste-skill-ignore */
+      --font-text: 'Inter', system-ui, sans-serif;
+      --margin: clamp(1rem, 4vw, 3.5rem);
+    }
+
+    .term-header { max-width: 960px; margin: 0 auto; padding: 1.5rem var(--margin); display: flex; justify-content: space-between; align-items: center; }
+    .term-brand { font-family: var(--font-display); color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    .term-main { max-width: 960px; margin: 0 auto; padding: 1.5rem var(--margin) 5rem; display: flex; flex-direction: column; gap: 3.5rem; }
+    .term-intro h1 { font-family: var(--font-display); font-size: clamp(1.85rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 0.75rem; }
+    .term-intro p { color: var(--muted); }
+
+    .terminal-box { background: var(--surface); border: 1px solid #263238; border-radius: 10px; overflow: hidden; font-family: var(--font-display); font-size: 0.95rem; }
+    .terminal-top { background: #1a2226; padding: 0.65rem 1rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--muted); }
+    .terminal-body { padding: 1.25rem; min-height: 260px; max-height: 360px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
+    .term-line { line-height: 1.55; white-space: pre-wrap; }
+    .term-cmd { color: var(--accent); }
+    .term-input-row { display: flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.25rem; background: #0f1416; border-top: 1px solid #263238; /* taste-skill-ignore */ }
+    .term-input { flex: 1; background: transparent; border: 0; color: var(--ink); font-family: var(--font-display); outline: none; }
+
+    .quick-cmds { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .quick-btn { padding: 0.45rem 0.9rem; background: var(--surface); border: 1px solid #263238; color: var(--accent); font-family: var(--font-display); font-size: 0.85rem; border-radius: 6px; }
+    .quick-btn:hover { background: var(--accent); color: var(--accent-ink); }
+
+    .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .infra-card { background: var(--surface); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+    .infra-card h3 { font-size: 1.2rem; font-family: var(--font-display); }
+    .infra-card p { color: var(--muted); font-size: var(--step-small); }
+  </style>
+</head>
+<body>
+  <header class="term-header">
+    <a href="#top" class="term-brand">quan@devops:~$</a>
+    <a href="../index.html" class="link-plain small">Quay lại danh sách mẫu</a>
+  </header>
+
+  <main id="top" class="term-main">
+    <section class="term-intro">
+      <h1>Minh Quân — Backend &amp; Cloud Engineer</h1>
+      <p>
+        6 năm thiết kế hạ tầng Kubernetes, Go microservices và tối ưu cơ sở dữ liệu chịu tải cao. Bạn có thể tương tác trực tiếp với cửa sổ terminal bên dưới.
+      </p>
+    </section>
+
+    <section aria-label="Cửa sổ dòng lệnh">
+      <div class="quick-cmds" role="group" aria-label="Lệnh nhanh">
+        <button type="button" class="quick-btn" data-run="about">about</button>
+        <button type="button" class="quick-btn" data-run="projects">projects</button>
+        <button type="button" class="quick-btn" data-run="skills">skills</button>
+        <button type="button" class="quick-btn" data-run="contact">contact</button>
+        <button type="button" class="quick-btn" data-run="clear">clear</button>
+      </div>
+
+      <div class="terminal-box" data-ui>
+        <div class="terminal-top">
+          <span>bash — minhquan-portfolio</span>
+          <span>v2.6.0</span>
+        </div>
+        <div id="term-output" class="terminal-body">
+          <div class="term-line">Chào mừng! Gõ <strong>help</strong> hoặc bấm các nút lệnh ở trên để xem hồ sơ.</div>
+        </div>
+        <form id="term-form" class="term-input-row">
+          <span class="term-cmd">$</span>
+          <label for="term-input" class="sr-only">Nhập lệnh</label>
+          <input id="term-input" class="term-input" type="text" placeholder="Gõ lệnh (help, about, projects, skills, contact)..." autocomplete="off" />
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-size: 1.6rem; margin-bottom: 1.5rem;">Hệ thống tiêu biểu</h2>
+      <div class="infra-grid">
+        <article class="infra-card">
+          <h3>CloudScale CLI</h3>
+          <p>Công cụ tự động hóa deploy đa cụm Kubernetes với zero-downtime rollback (1.4k stars GitHub).</p>
+          <button type="button" class="button" data-case-id="cloudscale">Xem kiến trúc</button>
+        </article>
+        <article class="infra-card">
+          <h3>LogStream Pipeline</h3>
+          <p>Hệ thống thu thập và lập chỉ mục 50GB log mỗi ngày với độ trễ truy vấn dưới 200ms.</p>
+          <button type="button" class="button" data-case-id="logstream">Xem kiến trúc</button>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-size: 1.6rem; margin-bottom: 1.25rem;">Liên hệ tư vấn hạ tầng</h2>
+      <form class="demo-form" data-demo-form>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tm-name">Tên của bạn</label>
+            <input id="tm-name" class="form-input" type="text" required placeholder="Lê Hải" />
+          </div>
+          <div class="form-group">
+            <label for="tm-email">Email</label>
+            <input id="tm-email" class="form-input" type="email" required placeholder="hai@tech.vn" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tm-msg">Bài toán hệ thống</label>
+          <textarea id="tm-msg" class="form-input" required placeholder="Tối ưu chi phí AWS, dựng CI/CD, xử lý tải cao..."></textarea>
+        </div>
+        <div><button type="submit" class="button">Gửi thông tin</button></div>
+        <p class="form-status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initCaseModal } from '../assets/js/demo-interactions.js';
+
+    initCaseModal({
+      cloudscale: {
+        meta: 'Open Source CLI · Go · Kubernetes',
+        title: 'CloudScale CLI',
+        image: '../assets/img/demo-developer.jpg',
+        problem: 'Đội ngũ dev mất 30 phút cấu hình thủ công mỗi lần deploy dịch vụ mới lên staging và production.',
+        solution: 'Viết CLI bằng Go tự động sinh manifest Helm, kiểm tra healthcheck và rollback tự động nếu lỗi.',
+        result: 'Thời gian deploy giảm xuống còn 90 giây, đạt 1.400+ stars trên GitHub.',
+        tags: ['Go', 'Kubernetes', 'Helm', 'GitHub Actions']
+      },
+      logstream: {
+        meta: 'Observability · ClickHouse · Kafka',
+        title: 'LogStream Pipeline',
+        image: '../assets/img/demo-developer.jpg',
+        problem: 'Hệ thống log cũ tốn chi phí lưu trữ cao và tìm kiếm chậm vào giờ cao điểm.',
+        solution: 'Chuyển sang Kafka + ClickHouse với chiến lược nén theo cột và phân vùng theo ngày.',
+        result: 'Giảm 55% chi phí máy chủ và tốc độ truy vấn đạt dưới 200ms.',
+        tags: ['Kafka', 'ClickHouse', 'Vector', 'Prometheus']
+      }
+    });
+
+    const OUTPUTS = {
+      help: 'Các lệnh hỗ trợ: about, projects, skills, contact, clear',
+      about: 'Minh Quân — 6 năm kinh nghiệm thiết kế hạ tầng Kubernetes, Go microservices và tối ưu cơ sở dữ liệu PostgreSQL.',
+      projects: '1. CloudScale CLI — Tự động hóa deploy đa cụm Kubernetes\n2. LogStream — Pipeline thu thập 50GB log/ngày\n3. SafeVault — Quản lý secret nội bộ chuẩn zero-trust',
+      skills: 'Ngôn ngữ: Go, TypeScript, Python, Bash\nHạ tầng: Docker, Kubernetes, Terraform, AWS, Cloudflare',
+      contact: 'Email: quan@infra.dev | GitHub: github.com/minhquan-dev | TP. Hồ Chí Minh'
+    };
+
+    const outEl = document.getElementById('term-output');
+    const formEl = document.getElementById('term-form');
+    const inputEl = document.getElementById('term-input');
+
+    function runCommand(raw) {
+      const cmd = raw.trim().toLowerCase();
+      if (!cmd) return;
+      if (cmd === 'clear') { outEl.innerHTML = ''; return; }
+      const cmdLine = document.createElement('div');
+      cmdLine.className = 'term-line term-cmd';
+      cmdLine.textContent = `$ ${cmd}`;
+      outEl.appendChild(cmdLine);
+
+      const resLine = document.createElement('div');
+      resLine.className = 'term-line';
+      resLine.textContent = OUTPUTS[cmd] || `Không tìm thấy lệnh "${cmd}". Thử gõ: help`;
+      outEl.appendChild(resLine);
+      outEl.scrollTop = outEl.scrollHeight;
+    }
+
+    formEl.addEventListener('submit', (e) => {
+      e.preventDefault();
+      runCommand(inputEl.value);
+      inputEl.value = '';
+    });
+
+    document.querySelectorAll('[data-run]').forEach((btn) => {
+      btn.addEventListener('click', () => runCommand(btn.dataset.run));
+    });
+  </script>
+</body>
+</html>

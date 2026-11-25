@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanguard Studio — Brand &amp; Digital Agency | Bold Swiss Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/base.css" />
+  <link rel="stylesheet" href="../assets/css/demo-shared.css" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f2f2f2;
+      --ink: #111111;
+      --muted: #555555;
+      --accent: #e1361a;
+      --accent-ink: #ffffff;
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-text: 'DM Sans', system-ui, sans-serif;
+      --margin: clamp(1.25rem, 4.5vw, 4rem);
+    }
+
+    .ag-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem var(--margin); }
+    .ag-brand { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; text-decoration: none; letter-spacing: -0.02em; }
+    .ag-nav { display: flex; align-items: center; gap: 1.5rem; font-size: var(--step-small); }
+    .ag-nav a { text-decoration: none; color: var(--muted); }
+    .ag-nav a:hover { color: var(--ink); }
+
+    .ag-hero {
+      padding: 2.5rem var(--margin) clamp(4rem, 8vw, 7rem);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--gutter);
+      row-gap: 2.5rem;
+    }
+
+    .ag-hero h1 { grid-column: 1 / -1; font-size: clamp(2.5rem, 6.5vw, 5.25rem); font-weight: 700; line-height: 0.98; letter-spacing: -0.03em; max-width: 15ch; }
+    .ag-hero-sub { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+    .ag-hero-sub p { color: var(--muted); max-width: 34ch; }
+    .ag-hero-img { grid-column: 1 / -1; aspect-ratio: 16 / 9; overflow: hidden; }
+
+    @media (min-width: 56em) {
+      .ag-hero h1 { grid-column: 1 / 9; }
+      .ag-hero-sub { grid-column: 9 / 13; align-self: end; }
+    }
+
+    .ag-section { padding-block: clamp(4rem, 9vw, 7.5rem); }
+    .ag-alt { background: var(--surface); }
+
+    .clients-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .client-item { background: var(--surface); padding: 1.5rem; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
+
+    .cases h2, .process h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; margin-bottom: 3rem; }
+    .case-grid { display: grid; gap: 2.5rem; }
+
+    .case-card {
+      background: var(--bg);
+      padding: clamp(1.75rem, 3.5vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .case-info { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .case-info h3 { font-size: clamp(1.5rem, 2.5vw, 2.1rem); font-weight: 700; }
+    .case-stats { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .stat-num { font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--accent); display: block; }
+
+    @media (min-width: 56em) {
+      .case-info { grid-column: 1 / 8; }
+      .case-stats { grid-column: 9 / 13; }
+    }
+
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; }
+    .step-box h3 { font-size: var(--step-lead); font-weight: 700; margin-bottom: 0.6rem; }
+    .step-box p { color: var(--muted); }
+
+    .two-col { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 56em) { .two-col { grid-template-columns: 1fr 1fr; } }
+
+    .ag-footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: clamp(4rem, 8vw, 6rem) var(--margin);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+    }
+    .ag-footer h2 { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 700; max-width: 14ch; }
+  </style>
+</head>
+<body>
+  <header class="ag-header">
+    <a href="#top" class="ag-brand">VANGUARD</a>
+    <nav class="ag-nav" aria-label="Điều hướng">
+      <a href="#services">Dịch vụ</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#process">Quy trình</a>
+      <a href="#contact">Liên hệ</a>
+      <a href="../index.html" class="link-plain">Danh sách mẫu</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="ag-hero">
+      <h1 data-rise style="--i:0">Thương hiệu và sản phẩm số tạo tăng trưởng</h1>
+      <div class="ag-hero-sub" data-rise style="--i:1">
+        <p>
+          Studio 14 nhân sự tại TP. Hồ Chí Minh đồng hành cùng doanh nghiệp B2B và bán lẻ tái thiết kế nhận diện, website và thương mại điện tử.
+        </p>
+        <a href="#contact" class="button">Đặt lịch tư vấn dự án</a>
+      </div>
+      <div class="ag-hero-img shutter" data-reveal>
+        <img src="../assets/img/demo-agency.jpg" alt="Không gian làm việc của Vanguard Studio" width="1600" height="900" class="cover" />
+      </div>
+    </section>
+
+    <section id="services" class="ag-section wrap">
+      <h2 style="font-size: clamp(1.85rem, 3vw, 2.75rem); font-weight: 700;" data-reveal>Năng lực &amp; Đối tác tiêu biểu</h2>
+      <p class="muted" style="margin-top: 0.75rem;" data-reveal>Từ chiến lược thương hiệu đến triển khai hệ thống web tốc độ cao.</p>
+      <div class="clients-bar" data-reveal>
+        <div class="client-item">Savora Coffee</div>
+        <div class="client-item">Nexa Logistics</div>
+        <div class="client-item">Kido Retail</div>
+        <div class="client-item">Mira Health</div>
+      </div>
+    </section>
+
+    <section id="cases" class="ag-section ag-alt cases wrap">
+      <h2 data-reveal>Kết quả triển khai thực tế</h2>
+      <div class="case-grid">
+        <article class="case-card" data-reveal>
+          <div class="case-info">
+            <h3>Savora Coffee Roasters — Tái định vị &amp; E-commerce</h3>
+            <p class="muted">
+              Bối cảnh: Tỷ lệ thoát trang cao trên di động. Giải pháp: Xây dựng luồng đặt hàng 3 bước và trang giới thiệu nguồn hạt minh bạch.
+            </p>
+            <button type="button" class="button" data-case-id="savora">Xem Case Study</button>
+          </div>
+          <div class="case-stats">
+            <div><span class="stat-num nums">+142%</span><span class="small muted">Đơn hàng trực tuyến</span></div>
+            <div><span class="stat-num nums">0.8s</span><span class="small muted">Tốc độ tải trang</span></div>
+          </div>
+        </article>
+
+        <article class="case-card" data-reveal>
+          <div class="case-info">
+            <h3>Nexa Logistics — Nhận diện &amp; Portal B2B</h3>
+            <p class="muted">
+              Bối cảnh: Khách hàng doanh nghiệp khó tra cứu báo giá. Giải pháp: Chuẩn hóa bộ nhận diện mới và bảng ước tính cước vận chuyển tức thì.
+            </p>
+            <button type="button" class="button" data-case-id="nexa">Xem Case Study</button>
+          </div>
+          <div class="case-stats">
+            <div><span class="stat-num nums">3.2x</span><span class="small muted">Yêu cầu báo giá B2B</span></div>
+            <div><span class="stat-num nums">14 ngày</span><span class="small muted">Ra mắt hệ thống mới</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="process" class="ag-section process wrap">
+      <h2 data-reveal>Quy trình 4 giai đoạn</h2>
+      <div class="process-steps">
+        <div class="step-box" data-reveal>
+          <h3>Nghiên cứu &amp; Định vị</h3>
+          <p>Phân tích đối thủ, phỏng vấn khách hàng mục tiêu và chốt thông điệp cốt lõi.</p>
+        </div>
+        <div class="step-box" data-reveal>
+          <h3>Kiến trúc &amp; Prototype</h3>
+          <p>Xây dựng cấu trúc nội dung, luồng chuyển đổi và bản mẫu tương tác trước khi thiết kế chi tiết.</p>
+        </div>
+        <div class="step-box" data-reveal>
+          <h3>Thiết kế &amp; Lập trình</h3>
+          <p>Hoàn thiện giao diện đa thiết bị, tối ưu SEO kỹ thuật và tốc độ tải thực tế.</p>
+        </div>
+        <div class="step-box" data-reveal>
+          <h3>Đo lường &amp; Bàn giao</h3>
+          <p>Gắn công cụ theo dõi chuyển đổi, hướng dẫn vận hành CMS và bảo hành kỹ thuật.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section ag-alt wrap">
+      <div class="two-col">
+        <div data-reveal>
+          <h2 style="font-size: clamp(1.85rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 1.5rem;">Khách hàng nói gì</h2>
+          <div class="testimonial-grid">
+            <article class="testimonial-card" style="background: var(--bg);">
+              <p class="testimonial-quote">"Đội ngũ Vanguard làm việc cực kỳ kỷ luật, số liệu chuyển đổi tăng ngay tháng đầu tiên sau khi ra mắt."</p>
+              <div class="testimonial-author"><strong>Chị Thảo Nguyên</strong>Giám đốc Marketing, Savora Coffee</div>
+            </article>
+          </div>
+        </div>
+        <div data-reveal>
+          <h2 style="font-size: clamp(1.85rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 1.5rem;">Câu hỏi thường gặp</h2>
+          <div class="faq-list">
+            <details class="faq-item" style="background: var(--bg);">
+              <summary>Ngân sách tối thiểu cho một dự án website công ty là bao nhiêu?</summary>
+              <p>Các gói triển khai trọn gói từ chiến lược nội dung đến lập trình tùy biến bắt đầu từ 45 triệu đồng.</p>
+            </details>
+            <details class="faq-item" style="background: var(--bg);">
+              <summary>Khách hàng có tự chỉnh sửa nội dung sau bàn giao được không?</summary>
+              <p>Có, chúng tôi tích hợp hệ thống quản trị CMS trực quan kèm video hướng dẫn chi tiết cho đội ngũ vận hành.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="ag-section wrap">
+      <div class="two-col">
+        <div data-reveal>
+          <h2 style="font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 700; margin-bottom: 1rem;">Bắt đầu dự án mới</h2>
+          <p class="muted">Để lại thông tin, bộ phận Account của Vanguard sẽ phản hồi lịch họp trong 1 ngày làm việc.</p>
+        </div>
+        <div data-reveal>
+          <form class="demo-form" data-demo-form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ag-name">Tên &amp; Doanh nghiệp</label>
+                <input id="ag-name" class="form-input" type="text" required placeholder="Nguyễn An — Công ty ABC" />
+              </div>
+              <div class="form-group">
+                <label for="ag-email">Email công việc</label>
+                <input id="ag-email" class="form-input" type="email" required placeholder="an@abc.vn" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ag-msg">Mục tiêu dự án</label>
+              <textarea id="ag-msg" class="form-input" required placeholder="Tái thiết kế website, làm nhận diện thương hiệu..."></textarea>
+            </div>
+            <div><button type="submit" class="button">Nhận đề xuất &amp; báo giá</button></div>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ag-footer">
+    <div><h2>Sẵn sàng cho dự án tiếp theo?</h2></div>
+    <div><p>newbiz@vanguardstudio.vn · TP. Hồ Chí Minh</p></div>
+  </footer>
+
+  <script type="module">
+    import { initCaseModal } from '../assets/js/demo-interactions.js';
+
+    initCaseModal({
+      savora: {
+        meta: 'F&B E-commerce · 6 tuần triển khai',
+        title: 'Savora Coffee Roasters',
+        image: '../assets/img/demo-agency.jpg',
+        problem: '72% người dùng rời trang ở bước chọn loại rang xay và thanh toán trên điện thoại.',
+        solution: 'Thiết kế lại bộ chọn khẩu vị trực quan 3 chạm và tích hợp thanh toán QR tức thì.',
+        result: 'Doanh thu kênh web tăng 142% sau 90 ngày, tốc độ tải đạt 0.8 giây trên 4G.',
+        tags: ['Brand Refresh', 'UI/UX Design', 'Custom Storefront', 'SEO']
+      },
+      nexa: {
+        meta: 'B2B Logistics · 4 tuần triển khai',
+        title: 'Nexa Logistics Portal',
+        image: '../assets/img/demo-developer.jpg',
+        problem: 'Khách hàng doanh nghiệp phải chờ email báo giá thủ công mất 24–48 giờ.',
+        solution: 'Xây dựng công cụ ước tính cước theo tuyến và tải trọng ngay trên trang chủ.',
+        result: 'Lượng yêu cầu báo giá hợp lệ tăng gấp 3.2 lần ngay trong tháng đầu tiên.',
+        tags: ['B2B Positioning', 'Interactive Calculator', 'Web Development']
+      }
+    });
+  </script>
+</body>
+</html>

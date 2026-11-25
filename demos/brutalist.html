@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khang Nguyễn — Creative Studio | Neo-Brutalist Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/base.css" />
+  <link rel="stylesheet" href="../assets/css/demo-shared.css" />
+  <style>
+    :root {
+      --bg: #fffdf5;
+      --surface: #d9f99d;
+      --ink: #0f0f0f;
+      --muted: #3f3f46;
+      --accent: #facc15;
+      --accent-ink: #0f0f0f;
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-text: 'Space Grotesk', system-ui, sans-serif;
+      --margin: clamp(1rem, 4vw, 3.5rem);
+    }
+
+    .brut-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem var(--margin);
+      border-bottom: 3px solid var(--ink);
+      background: var(--bg);
+    }
+
+    .brut-brand { font-weight: 700; font-size: 1.25rem; text-decoration: none; text-transform: uppercase; }
+    .brut-nav { display: flex; align-items: center; gap: 1.5rem; font-size: var(--step-small); font-weight: 700; }
+    .brut-nav a { text-decoration: none; }
+
+    .brut-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.4rem;
+      background: var(--accent);
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      box-shadow: 5px 5px 0 0 var(--ink); /* taste-skill-ignore */
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+
+    .brut-btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 0 var(--ink); /* taste-skill-ignore */ }
+    .brut-btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 0 var(--ink); /* taste-skill-ignore */ }
+
+    .brut-hero {
+      padding: clamp(3rem, 7vw, 6rem) var(--margin);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 2.5rem;
+      align-items: center;
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .brut-hero-copy { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+    .brut-hero-copy h1 { font-size: clamp(2.5rem, 6vw, 4.75rem); font-weight: 700; line-height: 0.98; letter-spacing: -0.03em; }
+    .brut-hero-media { grid-column: 1 / -1; border: 3px solid var(--ink); box-shadow: 8px 8px 0 0 var(--ink); /* taste-skill-ignore */ overflow: hidden; }
+
+    @media (min-width: 56em) {
+      .brut-hero-copy { grid-column: 1 / 7; }
+      .brut-hero-media { grid-column: 7 / 13; }
+    }
+
+    .brut-section { padding: clamp(4rem, 8vw, 7rem) var(--margin); border-bottom: 3px solid var(--ink); }
+    .brut-section h2 { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 700; margin-bottom: 2.5rem; }
+    .brut-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+
+    .brut-card {
+      background: #ffffff;
+      border: 3px solid var(--ink);
+      box-shadow: 6px 6px 0 0 var(--ink); /* taste-skill-ignore */
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .brut-card.is-lime { background: var(--surface); }
+    .brut-card h3 { font-size: 1.5rem; font-weight: 700; }
+
+    .brut-tag {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border: 2px solid var(--ink);
+      background: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .brut-footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 3.5rem var(--margin);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="brut-header">
+    <a href="#top" class="brut-brand">KHANG.WORK</a>
+    <nav class="brut-nav" aria-label="Điều hướng">
+      <a href="#works">DỰ ÁN</a>
+      <a href="#packages">GÓI DỊCH VỤ</a>
+      <a href="#contact">LIÊN HỆ</a>
+      <a href="../index.html" class="link-plain">DANH SÁCH MẪU</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="brut-hero">
+      <div class="brut-hero-copy">
+        <h1 data-rise style="--i:0">Thiết kế web táo bạo, không trộn lẫn</h1>
+        <p data-rise style="--i:1">
+          Dành cho startup trẻ, thương hiệu thời trang đường phố và các sản phẩm sáng tạo cần gây ấn tượng mạnh ngay giây đầu tiên.
+        </p>
+        <a href="#works" class="brut-btn" data-rise style="--i:2">XEM DỰ ÁN NỔI BẬT</a>
+      </div>
+      <div class="brut-hero-media" data-reveal>
+        <img src="../assets/img/demo-architect.jpg" alt="Studio thiết kế Neo-Brutalist" width="1600" height="900" class="cover" />
+      </div>
+    </section>
+
+    <section id="works" class="brut-section">
+      <h2 data-reveal>DỰ ÁN ĐÃ RA MẮT</h2>
+      <div class="brut-grid">
+        <article class="brut-card is-lime" data-reveal>
+          <span class="brut-tag">E-COMMERCE</span>
+          <h3>StreetLab Sneaker Drop</h3>
+          <p>Trang bán hàng giới hạn với đồng hồ đếm ngược và hiệu ứng tương tác tức thì khi đặt mua.</p>
+          <strong>+210% lượt truy cập giờ mở bán</strong>
+          <button type="button" class="brut-btn" data-case-id="streetlab">XEM CHI TIẾT</button>
+        </article>
+
+        <article class="brut-card" data-reveal>
+          <span class="brut-tag">SAAS LANDING</span>
+          <h3>ClipFast Video AI</h3>
+          <p>Landing page giới thiệu công cụ dựng video tự động với bảng giá trực quan và demo trực tiếp.</p>
+          <strong>4.9% tỷ lệ chuyển đổi dùng thử</strong>
+          <button type="button" class="brut-btn" data-case-id="clipfast">XEM CHI TIẾT</button>
+        </article>
+
+        <article class="brut-card is-lime" data-reveal>
+          <span class="brut-tag">EVENT</span>
+          <h3>Saigon Indie Fest</h3>
+          <p>Website bán vé và lịch biểu diễn đa sân khấu cho lễ hội âm nhạc độc lập 3.000 khán giả.</p>
+          <strong>Bán hết vé sau 48 giờ</strong>
+          <button type="button" class="brut-btn" data-case-id="indiefest">XEM CHI TIẾT</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="packages" class="brut-section" style="background: var(--surface);">
+      <h2 data-reveal>GÓI TRIỂN KHAI NHANH</h2>
+      <div class="brut-grid">
+        <article class="brut-card" data-reveal>
+          <span class="brut-tag">GÓI 1 · 10 NGÀY</span>
+          <h3>Landing Page Ra Mắt</h3>
+          <p>Thiết kế độc bản 1 trang bán hàng hoặc giới thiệu sản phẩm, tối ưu mobile và gắn form thu lead.</p>
+          <strong>Từ 15.000.000 đ</strong>
+        </article>
+        <article class="brut-card" data-reveal>
+          <span class="brut-tag">GÓI 2 · 3 TUẦN</span>
+          <h3>Website Thương Hiệu &amp; CMS</h3>
+          <p>Đầy đủ trang chủ, danh mục dự án, blog/tin tức tự quản trị và tối ưu SEO kỹ thuật.</p>
+          <strong>Từ 32.000.000 đ</strong>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="brut-section">
+      <h2 data-reveal>BẮT ĐẦU DỰ ÁN CÙNG KHANG.WORK</h2>
+      <form class="demo-form" style="max-width: 720px;" data-demo-form>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="br-name">TÊN CỦA BẠN</label>
+            <input id="br-name" class="form-input" style="border: 3px solid var(--ink); background: #fff;" type="text" required placeholder="Hoàng Minh" />
+          </div>
+          <div class="form-group">
+            <label for="br-email">EMAIL</label>
+            <input id="br-email" class="form-input" style="border: 3px solid var(--ink); background: #fff;" type="email" required placeholder="minh@brand.vn" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="br-msg">Ý TƯỞNG HOẶC GÓI QUAN TÂM</label>
+          <textarea id="br-msg" class="form-input" style="border: 3px solid var(--ink); background: #fff;" required placeholder="Làm landing page ra mắt bộ sưu tập mới..."></textarea>
+        </div>
+        <div><button type="submit" class="brut-btn">GỬI YÊU CẦU NGAY</button></div>
+        <p class="form-status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="brut-footer">
+    <div><strong>KHANG.WORK</strong> — Thiết kế Neo-Brutalist cho thương hiệu cá tính</div>
+    <a href="mailto:khang@khang.work" class="brut-btn">KHANG@KHANG.WORK</a>
+  </footer>
+
+  <script type="module">
+    import { initCaseModal } from '../assets/js/demo-interactions.js';
+
+    initCaseModal({
+      streetlab: {
+        meta: 'E-commerce Campaign · 2025',
+        title: 'StreetLab Sneaker Drop',
+        image: '../assets/img/demo-architect.jpg',
+        problem: 'Website cũ quá an toàn và chậm, không tạo được không khí săn hàng giới hạn cho giới trẻ.',
+        solution: 'Thiết kế giao diện Neo-Brutalist tương phản mạnh với đồng hồ đếm ngược và nút đặt mua tức thì.',
+        result: 'Lượt truy cập giờ mở bán tăng 210% và bán sạch 500 đôi trong 18 phút.',
+        tags: ['Art Direction', 'Campaign Site', 'High-Concurrency Checkout']
+      },
+      clipfast: {
+        meta: 'AI SaaS · 2025',
+        title: 'ClipFast Video AI',
+        image: '../assets/img/demo-agency.jpg',
+        problem: 'Khách hàng khó hình dung sản phẩm AI làm được gì chỉ qua mô tả chữ.',
+        solution: 'Đặt trình xem trước video mẫu ngay đầu trang cùng bảng giá minh bạch dễ so sánh.',
+        result: 'Đạt tỷ lệ chuyển đổi dùng thử 4.9%, cao gấp đôi mặt bằng chung ngành SaaS.',
+        tags: ['Landing Page', 'Interactive Preview', 'Copywriting']
+      },
+      indiefest: {
+        meta: 'Music Festival · 2024',
+        title: 'Saigon Indie Fest',
+        image: '../assets/img/demo-atelier.jpg',
+        problem: 'Khán giả thường bị nhầm giờ diễn giữa 3 sân khấu khác nhau.',
+        solution: 'Xây dựng lịch biểu diễn tương tác theo khung giờ và tích hợp mua vé QR 1 chạm.',
+        result: 'Bán hết 3.000 vé chỉ sau 48 giờ mở bán chính thức.',
+        tags: ['Event Branding', 'Ticketing UX', 'Mobile First']
+      }
+    });
+  </script>
+</body>
+</html>

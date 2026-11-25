@@ -1,0 +1,222 @@
+/* Shared structural components for demo pages (inherits each demo's own CSS tokens) */
+
+/* Case study clickable trigger */
+.case-trigger {
+  cursor: pointer;
+}
+
+/* Case Study Modal */
+.case-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.case-modal[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.case-dialog {
+  background: var(--bg);
+  color: var(--ink);
+  width: 100%;
+  max-width: 780px;
+  max-height: 90svh;
+  overflow-y: auto;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.case-dialog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.case-dialog-head h3 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.15;
+}
+
+.case-close {
+  padding: 0.45rem 0.9rem;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--step-small);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.case-dialog-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--surface);
+}
+
+.case-sections {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.case-block h4 {
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.case-block p {
+  color: var(--muted);
+}
+
+.case-deliverables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.case-tag {
+  padding: 0.35rem 0.75rem;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--step-small);
+}
+
+/* FAQ Accordion */
+.faq-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.faq-item {
+  background: var(--surface);
+  padding: 1.15rem 1.35rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.25rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item p {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: var(--step-small);
+}
+
+/* Demo Contact Form */
+.demo-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 42em) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: var(--step-small);
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  min-height: 2.85rem;
+  padding: 0.65rem 0.9rem;
+  background: var(--surface);
+  color: var(--ink);
+  border: 0;
+  font: inherit;
+  font-size: var(--step-small);
+}
+
+textarea.form-input {
+  min-height: 6.5rem;
+  resize: vertical;
+}
+
+.form-status {
+  font-size: var(--step-small);
+  color: var(--accent);
+  font-weight: 500;
+  min-height: 1.4em;
+}
+
+/* Testimonials Grid */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  background: var(--surface);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.testimonial-quote {
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.testimonial-author {
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+
+.testimonial-author strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 500;
+}

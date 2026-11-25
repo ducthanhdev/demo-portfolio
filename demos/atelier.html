@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier Phương Nam — Thiết kế Nội thất | Warm Luxury Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/base.css" />
+  <link rel="stylesheet" href="../assets/css/demo-shared.css" />
+  <style>
+    :root {
+      --bg: #181412;
+      --surface: #231e1b;
+      --ink: #f2ede4;
+      --muted: #b5aa9d;
+      --accent: #b89352;
+      --accent-ink: #181412;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-text: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --margin: clamp(1.25rem, 6vw, 5.5rem);
+    }
+
+    .at-header { display: flex; justify-content: space-between; align-items: center; padding: 1.75rem var(--margin); }
+    .at-brand { font-family: var(--font-display); font-size: 1.6rem; font-weight: 500; text-decoration: none; }
+    .at-nav { display: flex; align-items: center; gap: 1.75rem; font-size: var(--step-small); color: var(--muted); }
+    .at-nav a { text-decoration: none; }
+    .at-nav a:hover { color: var(--ink); }
+
+    .at-hero {
+      padding: 2.5rem var(--margin) clamp(4rem, 9vw, 8rem);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--gutter);
+      row-gap: 2.5rem;
+      align-items: center;
+    }
+
+    .at-hero-text { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1.5rem; }
+    .at-hero-text h1 { font-size: clamp(2.6rem, 5.8vw, 5rem); line-height: 0.98; max-width: 13ch; }
+    .at-hero-text p { color: var(--muted); max-width: 38ch; }
+    .at-hero-media { grid-column: 1 / -1; aspect-ratio: 4 / 3; overflow: hidden; }
+
+    @media (min-width: 56em) {
+      .at-hero-text { grid-column: 1 / 6; }
+      .at-hero-media { grid-column: 6 / 13; }
+    }
+
+    .at-section { padding-block: clamp(4.5rem, 9vw, 8rem); }
+    .at-alt { background: var(--surface); }
+
+    .space-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; }
+    .space-item img { aspect-ratio: 16 / 10; object-fit: cover; margin-bottom: 1.25rem; }
+    .space-item h3 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .space-item p { color: var(--muted); margin-bottom: 1rem; }
+
+    .consult { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gutter); }
+    .consult-left { grid-column: 1 / -1; }
+    .consult-left h2 { font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 1rem; }
+    .consult-left p { color: var(--muted); }
+    .consult-right { grid-column: 1 / -1; background: var(--surface); padding: clamp(1.5rem, 3.5vw, 2.5rem); display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .scope-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .scope-btn { padding: 0.6rem 1.1rem; background: var(--bg); color: var(--muted); font-size: var(--step-small); }
+    .scope-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); font-weight: 500; }
+
+    @media (min-width: 56em) {
+      .consult-left { grid-column: 1 / 6; }
+      .consult-right { grid-column: 7 / 13; }
+    }
+
+    .two-col { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 56em) { .two-col { grid-template-columns: 1fr 1fr; } }
+
+    .at-footer {
+      padding: 3.5rem var(--margin);
+      background: var(--surface);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      font-size: var(--step-small);
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="at-header">
+    <a href="#top" class="at-brand">Atelier Phương Nam</a>
+    <nav class="at-nav" aria-label="Điều hướng">
+      <a href="#spaces">Không gian</a>
+      <a href="#consult">Dự toán</a>
+      <a href="#contact">Đặt lịch</a>
+      <a href="../index.html" class="link-plain">Danh sách mẫu</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="at-hero">
+      <div class="at-hero-text">
+        <h1 data-rise style="--i:0">Không gian sống mang dấu ấn tĩnh tại</h1>
+        <p data-rise style="--i:1">
+          Thiết kế và thi công trọn gói nội thất biệt thự, penthouse và boutique resort bằng vật liệu tự nhiên tuyển chọn.
+        </p>
+        <div><a href="#contact" class="button">Đặt lịch hẹn riêng</a></div>
+      </div>
+      <div class="at-hero-media shutter" data-reveal>
+        <img src="../assets/img/demo-atelier.jpg" alt="Phòng khách với bàn đá travertine và ánh nắng chiều" width="1600" height="900" class="cover" />
+      </div>
+    </section>
+
+    <section id="spaces" class="at-section at-alt wrap">
+      <h2 style="font-size: clamp(2rem, 3.8vw, 3.25rem); margin-bottom: 3rem;" data-reveal>Dự án hoàn thiện</h2>
+      <div class="space-grid">
+        <article class="space-item" data-reveal>
+          <img src="../assets/img/demo-atelier.jpg" alt="Penthouse Thủ Thiêm" width="1600" height="900" loading="lazy" class="case-trigger" data-case-id="thuthiem" />
+          <h3>Penthouse Thủ Thiêm</h3>
+          <p>Đá travertine Ý, gỗ óc chó Bắc Mỹ và hệ rèm vải lanh dệt thủ công trên diện tích 360 m².</p>
+          <button type="button" class="button" data-case-id="thuthiem">Xem chi tiết không gian</button>
+        </article>
+        <article class="space-item" data-reveal>
+          <img src="../assets/img/demo-architect.jpg" alt="Villa Cam Ranh" width="1600" height="900" loading="lazy" class="case-trigger" data-case-id="camranh" />
+          <h3>Villa Cam Ranh</h3>
+          <p>Không gian mở hướng biển với vật liệu chống ăn mòn muối biển và ánh sáng gián tiếp dịu mắt.</p>
+          <button type="button" class="button" data-case-id="camranh">Xem chi tiết không gian</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="consult" class="at-section wrap">
+      <div class="consult">
+        <div class="consult-left" data-reveal>
+          <h2>Dự toán thời gian triển khai</h2>
+          <p>Chọn loại hình công trình để xem quy mô và thời gian hoàn thiện tiêu chuẩn từ đội ngũ Atelier Phương Nam.</p>
+        </div>
+        <div class="consult-right" data-reveal>
+          <div class="scope-btns" role="group" aria-label="Loại hình công trình">
+            <button type="button" class="scope-btn" data-scope="penthouse" aria-pressed="true">Penthouse / Căn hộ</button>
+            <button type="button" class="scope-btn" data-scope="villa" aria-pressed="false">Biệt thự độc lập</button>
+            <button type="button" class="scope-btn" data-scope="hotel" aria-pressed="false">Boutique Resort</button>
+          </div>
+          <p id="scope-result">Thiết kế 4–6 tuần · Thi công hoàn thiện 10–14 tuần · Bảo hành kết cấu gỗ và đá 5 năm.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="at-section at-alt wrap">
+      <div class="two-col">
+        <div data-reveal>
+          <h2 style="font-size: clamp(1.85rem, 3vw, 2.5rem); margin-bottom: 1.5rem;">Cảm nhận gia chủ</h2>
+          <div class="testimonial-grid">
+            <article class="testimonial-card" style="background: var(--bg);">
+              <p class="testimonial-quote">"Mỗi góc nhỏ trong căn hộ đều được tính toán tỉ mỉ từ độ nhám mặt đá đến ánh sáng đèn buổi tối."</p>
+              <div class="testimonial-author"><strong>Gia đình chị Minh Thư</strong>Chủ nhân Penthouse Thủ Thiêm</div>
+            </article>
+          </div>
+        </div>
+        <div data-reveal>
+          <h2 style="font-size: clamp(1.85rem, 3vw, 2.5rem); margin-bottom: 1.5rem;">Câu hỏi thường gặp</h2>
+          <div class="faq-list">
+            <details class="faq-item" style="background: var(--bg);">
+              <summary>Atelier có xưởng sản xuất đồ gỗ rời riêng không?</summary>
+              <p>Có, chúng tôi sở hữu xưởng mộc tại Bình Dương giúp kiểm soát chất lượng gỗ tự nhiên và tiến độ lắp đặt.</p>
+            </details>
+            <details class="faq-item" style="background: var(--bg);">
+              <summary>Showroom có tiếp khách không đặt lịch trước không?</summary>
+              <p>Để đảm bảo có kiến trúc sư trưởng trực tiếp tư vấn vật liệu mẫu, quý khách vui lòng đặt lịch trước 24 giờ.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="at-section wrap">
+      <div class="two-col">
+        <div data-reveal>
+          <h2 style="font-size: clamp(2rem, 3.5vw, 2.75rem); margin-bottom: 1rem;">Đặt lịch tại Showroom Quận 1</h2>
+          <p class="muted">Quý khách có thể đính kèm thông tin mặt bằng để đội ngũ chuẩn bị trước mẫu đá và gỗ phù hợp.</p>
+        </div>
+        <div data-reveal>
+          <form class="demo-form" data-demo-form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="at-name">Quý danh</label>
+                <input id="at-name" class="form-input" type="text" required placeholder="Anh/Chị..." />
+              </div>
+              <div class="form-group">
+                <label for="at-phone">Số điện thoại liên hệ</label>
+                <input id="at-phone" class="form-input" type="tel" required placeholder="090..." />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="at-note">Loại hình công trình &amp; thời gian dự kiến</label>
+              <textarea id="at-note" class="form-input" required placeholder="Penthouse 280m2, dự kiến nhận bàn giao tháng 8..."></textarea>
+            </div>
+            <div><button type="submit" class="button">Xác nhận lịch hẹn</button></div>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="at-footer">
+    <div><strong>Atelier Phương Nam</strong> — atelier@phuongnam.vn</div>
+    <div>Showroom Quận 1, TP. Hồ Chí Minh · Tiếp khách theo lịch hẹn</div>
+  </footer>
+
+  <script type="module">
+    import { initCaseModal } from '../assets/js/demo-interactions.js';
+
+    initCaseModal({
+      thuthiem: {
+        meta: 'Thủ Thiêm · 360 m² · Hoàn thiện 2025',
+        title: 'Penthouse Thủ Thiêm',
+        image: '../assets/img/demo-atelier.jpg',
+        problem: 'Căn hộ thông tầng có nhiều vách kính lớn dễ gây chói và cảm giác trống trải.',
+        solution: 'Ốp hệ vách gỗ óc chó tiêu âm, kết hợp rèm vải lanh hai lớp và đảo bếp đá travertine nguyên khối.',
+        result: 'Tạo nên không gian ấm cúng, yên tĩnh tuyệt đối giữa trung tâm thành phố.',
+        tags: ['Thiết kế nội thất', 'Sản xuất đồ gỗ', 'Ánh sáng kiến trúc']
+      },
+      camranh: {
+        meta: 'Cam Ranh · 520 m² · Hoàn thiện 2024',
+        title: 'Villa Cam Ranh',
+        image: '../assets/img/demo-architect.jpg',
+        problem: 'Khí hậu ven biển có độ mặn cao dễ làm gỉ sét phụ kiện kim loại và bạc màu gỗ.',
+        solution: 'Sử dụng đồng thau xử lý oxy hóa tự nhiên, gỗ teak ngoài trời và sơn khoáng chống muối biển.',
+        result: 'Công trình giữ nguyên vẻ đẹp bề mặt sau 2 mùa mưa bão ven biển.',
+        tags: ['Hospitality Design', 'Vật liệu ven biển', 'Thi công trọn gói']
+      }
+    });
+
+    const SCOPES = {
+      penthouse: 'Thiết kế 4–6 tuần · Thi công hoàn thiện 10–14 tuần · Bảo hành kết cấu gỗ và đá 5 năm.',
+      villa: 'Thiết kế 6–8 tuần · Thi công hoàn thiện 16–22 tuần · Giám sát tác giả xuyên suốt.',
+      hotel: 'Thiết kế 8–12 tuần · Triển khai theo từng phân khu · Tư vấn đồng bộ ánh sáng và nội thất rời.'
+    };
+    const scopeBtns = document.querySelectorAll('[data-scope]');
+    const scopeOut = document.getElementById('scope-result');
+    scopeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        scopeBtns.forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+        scopeOut.textContent = SCOPES[btn.dataset.scope];
+      });
+    });
+  </script>
+</body>
+</html>

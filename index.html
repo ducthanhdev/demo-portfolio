@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Demo — Bộ sưu tập mẫu Cá nhân &amp; Công ty</title>
+  <meta name="description" content="Thư viện các mẫu portfolio cá nhân và công ty theo nhiều phong cách thiết kế khác nhau, hỗ trợ xem thử trực tiếp trên desktop và mobile." />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/base.css" />
+  <link rel="stylesheet" href="./assets/css/hub.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <a href="#top" class="wordmark">Portfolio Demo</a>
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="#demos">Mẫu giao diện</a>
+        <a href="#styles">Cách chọn mẫu</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+    </div>
+    <a href="#demos" class="button">Xem danh sách</a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Giới thiệu">
+      <div class="hero-prints">
+        <div class="hero-print-small" data-rise style="--i:1">
+          <img src="./assets/img/demo-atelier.jpg" alt="Chi tiết không gian nội thất tối giản" width="1600" height="1000" class="cover" />
+        </div>
+        <div class="hero-print-large" data-rise style="--i:0">
+          <img src="./assets/img/demo-architect.jpg" alt="Mẫu portfolio kiến trúc tối giản" width="1600" height="1000" class="is-active" />
+          <img src="./assets/img/demo-agency.jpg" alt="Mẫu portfolio công ty sáng tạo" width="1600" height="1000" loading="lazy" />
+          <img src="./assets/img/demo-developer.jpg" alt="Mẫu portfolio lập trình viên nền tối" width="1600" height="1000" loading="lazy" />
+        </div>
+      </div>
+
+      <h1 class="hero-title" data-rise style="--i:2">Bộ sưu tập Portfolio Demo</h1>
+      <p class="hero-note" data-rise style="--i:3">
+        Bảy phong cách thiết kế phổ biến cho cá nhân và doanh nghiệp, nhấn vào từng mẫu để trình bày trực tiếp cho khách hàng.
+      </p>
+    </section>
+
+    <section id="demos" class="showcase wrap" aria-labelledby="demos-heading">
+      <div class="showcase-head">
+        <h2 id="demos-heading" data-reveal>Danh sách mẫu trình bày</h2>
+        <div class="filter-bar" role="group" aria-label="Lọc theo đối tượng">
+          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">Tất cả (7)</button>
+          <button type="button" class="filter-btn" data-filter="Cá nhân" aria-pressed="false">Cá nhân</button>
+          <button type="button" class="filter-btn" data-filter="Công ty" aria-pressed="false">Công ty</button>
+        </div>
+      </div>
+
+      <div id="demo-wall" class="demo-wall">
+        <!-- Rendered from assets/js/demos-data.js -->
+      </div>
+    </section>
+
+    <section id="styles" class="approach wrap" aria-labelledby="styles-heading">
+      <div class="approach-grid">
+        <h2 id="styles-heading" class="approach-heading" data-reveal>Chọn hướng phù hợp với khách hàng</h2>
+        <div class="approach-cols">
+          <div class="approach-block" data-reveal>
+            <h3>Portfolio Cá nhân</h3>
+            <p>
+              Tập trung vào dấu ấn chuyên môn, tư duy giải quyết vấn đề và 3–5 dự án tiêu biểu nhất. Phù hợp với kiến trúc sư, lập trình viên, designer hoặc chuyên gia tư vấn độc lập.
+            </p>
+          </div>
+          <div class="approach-block" data-reveal>
+            <h3>Portfolio Công ty</h3>
+            <p>
+              Nhấn mạnh năng lực triển khai, quy trình làm việc rõ ràng và kết quả kinh doanh thực tế (case study) để tạo niềm tin cho khách hàng doanh nghiệp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-band wrap" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="sr-only">Liên hệ tùy chỉnh mẫu</h2>
+      <div class="contact-grid">
+        <p class="contact-statement" data-reveal>
+          Cần tùy chỉnh màu sắc, nội dung hoặc bổ sung thêm phong cách riêng cho dự án của khách hàng?
+        </p>
+        <div class="contact-thumb shutter" data-reveal>
+          <img src="./assets/img/demo-agency.jpg" alt="Không gian làm việc studio" width="1600" height="1000" loading="lazy" class="cover" />
+        </div>
+        <div class="contact-info" data-reveal>
+          <p class="contact-question">Trao đổi yêu cầu thiết kế</p>
+          <div class="contact-links">
+            <a href="mailto:hello@portfoliodemo.vn" class="link-plain">hello@portfoliodemo.vn</a>
+            <a href="#demos" class="link">Xem lại danh sách mẫu</a>
+          </div>
+          <p class="small muted">TP. Hồ Chí Minh · Phản hồi trong 24 giờ</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-photo">
+      <img src="./assets/img/demo-architect.jpg" alt="Chi tiết công trình kiến trúc bê tông và gỗ" width="1600" height="1000" loading="lazy" />
+    </div>
+    <div class="footer-panel">
+      <span class="small muted">Portfolio Demo Showcase</span>
+      <nav class="footer-menu" aria-label="Liên kết chân trang">
+        <a href="./demos/architect.html" target="_blank" rel="noopener">Minh Khôi — Kiến trúc sư</a>
+        <a href="./demos/developer.html" target="_blank" rel="noopener">Đức Thành — Developer</a>
+        <a href="./demos/agency.html" target="_blank" rel="noopener">Vanguard Studio — Agency</a>
+        <a href="./demos/atelier.html" target="_blank" rel="noopener">Atelier Phương Nam — Nội thất</a>
+        <a href="./demos/bento.html" target="_blank" rel="noopener">Lan Anh — Bento Grid</a>
+        <a href="./demos/brutalist.html" target="_blank" rel="noopener">Khang Nguyễn — Neo-Brutalist</a>
+        <a href="./demos/terminal.html" target="_blank" rel="noopener">Minh Quân — Terminal CLI</a>
+      </nav>
+      <div class="footer-bottom">
+        <span>7 phong cách độc lập · Responsive Desktop &amp; Mobile</span>
+        <span>2026 Portfolio Demo</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Live Preview Modal -->
+  <div id="preview-overlay" class="preview-overlay" role="dialog" aria-modal="true" aria-labelledby="preview-title" aria-hidden="true">
+    <div class="preview-bar">
+      <span id="preview-title" class="preview-title">Đang xem mẫu</span>
+      <div class="preview-controls" role="group" aria-label="Kích thước màn hình">
+        <button type="button" class="viewport-btn" data-viewport-btn="desktop" aria-pressed="true">Desktop</button>
+        <button type="button" class="viewport-btn" data-viewport-btn="tablet" aria-pressed="false">Tablet (768px)</button>
+        <button type="button" class="viewport-btn" data-viewport-btn="mobile" aria-pressed="false">Mobile (390px)</button>
+      </div>
+      <div class="preview-actions">
+        <a id="preview-open-new" href="#" target="_blank" rel="noopener" class="link small">Mở tab mới</a>
+        <button type="button" id="preview-close" class="button">Đóng</button>
+      </div>
+    </div>
+    <div id="preview-stage" class="preview-stage" data-viewport="desktop">
+      <iframe id="preview-frame" class="preview-frame" title="Xem trước portfolio demo" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <script type="module" src="./assets/js/reveal.js"></script>
+  <script type="module" src="./assets/js/hub.js"></script>
+</body>
+</html>
